@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_10_162701) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_10_164440) do
   create_table "auctions", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
@@ -19,6 +19,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_10_162701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.integer "bidder_id"
+    t.integer "auction_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
