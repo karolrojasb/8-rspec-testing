@@ -4,11 +4,11 @@ RSpec.describe Auction, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
 
   subject {
-    described_class.new(title: "Anything",
-                        description: "Lorem ipsum",
+    described_class.new(title: 'Anything',
+                        description: 'Lorem ipsum',
                         start_date: DateTime.now,
                         end_date: DateTime.now + 1.week)
-  }
+    }
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
@@ -28,5 +28,9 @@ RSpec.describe Auction, type: :model do
   it 'is not valid without a end_date' do
     subject.end_date = nil
     expect(subject).to_not be_valid
+  end
+
+  describe 'Associations' do
+    it { should belong_to(:user).without_validating_presence }
   end
 end
